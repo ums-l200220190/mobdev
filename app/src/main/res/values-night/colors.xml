@@ -1,0 +1,14 @@
+<resources>
+    <color name="colorPrimary">#8A56FF</color>
+    <color name="colorPrimaryVariant">#4A148C</color>
+    <color name="colorSecondary">#018786</color>
+
+    <color name="background">#121212</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="text">#FFFFFF</color>
+    <color name="textInvert">#000000</color>
+    <color name="toolbarText">#FFFFFF</color>
+
+    <color name="textBlack">#000000</color>
+    <color name="textWhite">#FFFFFF</color>
+</resources>

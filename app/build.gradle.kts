@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt") // Database - 5/6/2025
 }
 
 android {
@@ -51,6 +52,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.play.services.location)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -65,4 +69,8 @@ dependencies {
     implementation(libs.androidx.core.ktx.v1120)
     implementation(libs.material)
     implementation(libs.play.services.maps)
+
+    // Database - 5/6/2025
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
 }

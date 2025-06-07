@@ -1,11 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true" >
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarMap"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:title="PMI Terdekat"
+        app:titleCentered="false"
+        app:titleTextColor="@color/toolbarText" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTampilkanPMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PMI Terdekat"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal|top"
+            app:backgroundTint="@color/colorPrimaryVariant"
+            app:cornerRadius="4dp"
+            android:textColor="@color/text"/>
+
+        <Button
+            android:id="@+id/btnBukaGoogleMaps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buka di Google Maps"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="?attr/colorSecondary"
+            app:iconTint="@color/textBlack"
+            android:textColor="@color/text" />
+    </FrameLayout>
+
+</LinearLayout>
