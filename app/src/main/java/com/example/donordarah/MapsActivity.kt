@@ -32,11 +32,12 @@ class MapsActivity : AppCompatActivity() {
 
     // Daftar PMI
     private val daftarPMI = listOf(
-        LatLng(-7.5698, 110.8314), // PMI Solo
-        LatLng(-7.8012, 110.3645), // PMI Yogyakarta
-        LatLng(-7.2504, 112.7688), // PMI Surabaya
-        LatLng(-6.2088, 106.8456), // PMI Jakarta
-        LatLng(-6.9147, 107.6098)  // PMI Bandung
+        Pair(LatLng(-7.5597647,110.8430928), "PMI Kota Surakarta"),
+        Pair(LatLng(-7.6933244,110.8367378), "PMI Kab Sukoharjo"),
+        Pair(LatLng(-7.6944167,110.6098714), "PMI Klaten Kota"),
+        Pair(LatLng(-7.5378536,110.6009275), "PMI Kab Boyolali"),
+        Pair(LatLng(-7.8015039,110.9151525), "PMI Wonogiri"),
+        Pair(LatLng(-7.8261016,110.3920925), "PMI Yogyakarta")
     )
 
 
@@ -148,10 +149,11 @@ class MapsActivity : AppCompatActivity() {
                     val pmiTerdekat = cariPMITerdekat(location)
                     lokasiPMITerdekat = pmiTerdekat
 
+                    val namaPMI = daftarPMI.find { it.first == pmiTerdekat }?.second ?: "PMI Terdekat"
                     map.addMarker(
                         MarkerOptions()
                             .position(pmiTerdekat)
-                            .title("PMI Terdekat")
+                            .title(namaPMI)
                     )
 
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 10f))
@@ -186,10 +188,10 @@ class MapsActivity : AppCompatActivity() {
     }
 
     private fun cariPMITerdekat(lokasiPengguna: Location): LatLng {
-        var lokasiTerdekat = daftarPMI[0]
+        var lokasiTerdekat = daftarPMI[0].first
         var jarakTerdekat = Float.MAX_VALUE
 
-        for (pmi in daftarPMI) {
+        for ((pmi, _) in daftarPMI) {
             val results = FloatArray(1)
             Location.distanceBetween(
                 lokasiPengguna.latitude, lokasiPengguna.longitude,
