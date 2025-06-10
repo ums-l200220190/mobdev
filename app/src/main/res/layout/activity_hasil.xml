@@ -52,6 +52,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <!-- Alasan -->
+        <TextView
+            android:id="@+id/txtAlasan"
+            android:text="Alasan:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:background="@drawable/bg_alasan_default"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"
+            android:textAlignment="viewStart" />
+
+        <!-- Tombol Maps -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnMaps"
             android:text="Lihat Lokasi PMI"

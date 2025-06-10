@@ -24,9 +24,11 @@ class HasilActivity : AppCompatActivity() {
 
         val nama = intent.getStringExtra("NAMA")
         val status = intent.getStringExtra("STATUS")
+        val alasan = intent.getStringExtra("ALASAN")
 
         val txtNama = findViewById<TextView>(R.id.txtNama)
         val txtStatus = findViewById<TextView>(R.id.txtStatus)
+        val txtAlasan = findViewById<TextView>(R.id.txtAlasan)
         val btnMaps = findViewById<Button>(R.id.btnMaps)
 
         txtNama.text = "\uD83D\uDC4B Halo, $nama!"
@@ -38,6 +40,7 @@ class HasilActivity : AppCompatActivity() {
                     text = "✅ Anda Memenuhi Syarat untuk Donor Darah"
                     setTextColor(Color.parseColor("#388E3C")) // Hijau gelap
                 }
+                txtAlasan.visibility = View.GONE
                 btnMaps.visibility = View.VISIBLE
             }
 
@@ -46,6 +49,17 @@ class HasilActivity : AppCompatActivity() {
                     text = "⚠\uFE0F Maaf, Anda Belum Memenuhi Syarat untuk Donor Darah."
                     setTextColor(Color.parseColor("#D32F2F")) // Merah
                 }
+
+                if (!alasan.isNullOrEmpty()) {
+                    txtAlasan.apply {
+                        text = "Karena:\n$alasan"
+                        setTextColor(Color.parseColor("#F57C00")) // Oranye tua
+                    }
+                    txtAlasan.visibility = View.VISIBLE
+                } else {
+                    txtAlasan.visibility = View.GONE
+                }
+
                 btnMaps.visibility = View.GONE
             }
 
@@ -54,6 +68,7 @@ class HasilActivity : AppCompatActivity() {
                     text = "ℹ\uFE0F Status tidak diketahui. Mohon coba lagi."
                     setTextColor(Color.GRAY)
                 }
+                txtAlasan.visibility = View.GONE
                 btnMaps.visibility = View.GONE
             }
         }

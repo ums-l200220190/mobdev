@@ -69,7 +69,22 @@ class MainActivity : AppCompatActivity() {
             val berat = beratText.toIntOrNull() ?: 0
             val riwayat = cbPenyakit.isChecked
 
-            val status = if (umur in 17..60 && berat >= 45 && !riwayat) {
+            val alasan = mutableListOf<String>()
+
+            if (umur <= 17) {
+                alasan.add("• Umur Anda kurang dari 18 tahun")
+            }
+            if (umur >= 60) {
+                alasan.add("• Umur Anda melebihi batas 60 tahun")
+            }
+            if (berat < 45) {
+                alasan.add("• Berat badan Anda kurang dari 45 kg")
+            }
+            if (riwayat) {
+                alasan.add("• Anda memiliki riwayat penyakit berbahaya")
+            }
+
+            val status = if (alasan.isEmpty()) {
                 "Memenuhi"
             } else {
                 "Belum Memenuhi"
@@ -92,6 +107,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, HasilActivity::class.java)
             intent.putExtra("NAMA", nama)
             intent.putExtra("STATUS", status)
+            intent.putExtra("ALASAN", alasan.joinToString("\n"))
             startActivity(intent)
         }
     }
